@@ -1,0 +1,38 @@
+name: BungeeSuiteTeleports
+main : com.minecraftdimensions.bungeesuiteteleports.BungeeSuiteTeleports
+version: 0.16
+description: Part of the BungeeSuite this plugin allows users to teleport to each other.
+author: Bloodsplat
+website: http://www.spigotmc.org/resources/bungeesuite.9/
+prefix: BungeeSuite
+commands:
+    tp:
+        description: Teleports your to a player.
+        usage: Error type /tp (player) *(player)
+        aliases: [teleport]
+    tpall:
+        description: Teleports all players to you.
+        usage: Error type /tpall *(player)
+        aliases: [teleportall]
+    tpa:
+        description: Asks the target player if you can teleport to them.
+        usage: Error type /tpa (player)
+        aliases: [teleportask, teleporta]
+    tpahere:
+        description: Sends a request for the target player to teleport to you.
+        aliases: [teleporthere]
+    tpaccept:
+        description: Accepts the teleport request.
+        aliases: [teleportaccept]
+    tpdeny:
+        description: Denies the teleport request.
+        aliases: [teleportdeny]
+    tphere:
+        description: Teleports a player to you.
+        usage: Error type /tphere (player)
+        aliases: [teleporthere]
+    back:
+        description: Teleports you back to your last teleport position or death.
+    tptoggle:
+        description: Toggles if people are able to teleport to you or not
+        aliases: [teleporttoggle]
