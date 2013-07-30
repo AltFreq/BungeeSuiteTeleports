@@ -178,23 +178,26 @@ public class Utilities {
 
 	public void teleportToLocation(String player, String loc) {
 		Player p = Bukkit.getPlayer(player);
-		sendBackLocation(p);
+
 		String locs[] = loc.split("~");
 		double x = Double.parseDouble(locs[1]);
 		double y = Double.parseDouble(locs[2]);
 		double z = Double.parseDouble(locs[3]);
 		World w = Bukkit.getWorld(locs[4]);
 		Location location = new Location(w, x, y, z);
-		if (p != null) {
-			p.teleport(location);
+		if(p==null){
+			plugin.locqueue.put(player, location);
+			return;
 		}
+		sendBackLocation(p);
+			p.teleport(location);
 	}
 
 	public void teleportToPlayer(String player, String target) {
 		Player p = Bukkit.getPlayer(player);
 		Player t = Bukkit.getPlayer(target);
 		if(p==null){
-			plugin.tpqueue.put(player, target);
+			plugin.tpqueue.put(player, t);
 			return;
 		}
 		p.teleport(t.getLocation());	
@@ -202,9 +205,6 @@ public class Utilities {
 			t.sendMessage(ChatColor.DARK_GREEN+p.getDisplayName()+" has teleported to you");
 		}
 		p.sendMessage(ChatColor.DARK_GREEN+"You have teleported to "+ t.getDisplayName());
-		if(plugin.tpqueue.containsKey(player)){
-			plugin.tpqueue.remove(player);
-		}
 	}
 
 	public void toggleTeleports(String name) {

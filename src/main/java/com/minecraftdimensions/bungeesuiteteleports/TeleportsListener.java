@@ -36,7 +36,13 @@ public class TeleportsListener implements PluginMessageListener, Listener {
 	@EventHandler
 	public void onPlayerLogin(PlayerJoinEvent e){
 		if(plugin.tpqueue.containsKey(e.getPlayer().getName())){
-			plugin.utils.teleportToPlayer(e.getPlayer().getName(), plugin.tpqueue.get(e.getPlayer().getName()));
+			plugin.utils.teleportToPlayer(e.getPlayer().getName(), plugin.tpqueue.get(e.getPlayer().getName()).getName());
+			plugin.tpqueue.remove(e.getPlayer().getName());
+			return;
+		}else if(plugin.locqueue.containsKey(e.getPlayer().getName())){
+			e.getPlayer().teleport(plugin.locqueue.get(e.getPlayer().getName()));
+			plugin.locqueue.remove(e.getPlayer().getName());
+			plugin.utils.sendBackLocation(e.getPlayer());
 		}
 	}
 

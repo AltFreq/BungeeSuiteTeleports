@@ -4,6 +4,8 @@ package com.minecraftdimensions.bungeesuiteteleports;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BungeeSuiteTeleports extends JavaPlugin {
@@ -13,7 +15,8 @@ public class BungeeSuiteTeleports extends JavaPlugin {
 	static String OUTGOING_PLUGIN_CHANNEL = "BungeeSuite";
 	static String INCOMING_PLUGIN_CHANNEL = "BungeeSuiteTp";
 	
-	public HashMap<String, String>tpqueue = new HashMap<String,String>();
+	public HashMap<String, Player>tpqueue = new HashMap<String,Player>();
+	public HashMap<String, Location>locqueue = new HashMap<String,Location>();
 
 	@Override
 	public void onEnable() {
