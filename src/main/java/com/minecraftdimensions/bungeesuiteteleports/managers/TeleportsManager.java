@@ -3,6 +3,7 @@ package com.minecraftdimensions.bungeesuiteteleports.managers;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
@@ -19,6 +20,7 @@ public class TeleportsManager {
 
 public static HashMap<String,Player> pendingTeleports = new HashMap<String,Player>();
 public static HashMap<String,Location> pendingTeleportLocations = new HashMap<String,Location>();
+public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 
 	public static void tpAll(CommandSender sender, String targetPlayer) {
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
@@ -92,7 +94,7 @@ public static HashMap<String,Location> pendingTeleportLocations = new HashMap<St
 
 	}
 
-	public void sendDeathBackLocation(Player p) {
+	public static void sendDeathBackLocation(Player p) {
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(b);
 		try {
@@ -110,7 +112,7 @@ public static HashMap<String,Location> pendingTeleportLocations = new HashMap<St
 		.runTaskAsynchronously(BungeeSuiteTeleports.instance);
 	}
 	
-	public void sendTeleportBackLocation(Player p) {
+	public static void sendTeleportBackLocation(Player p) {
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(b);
 		try {
@@ -136,7 +138,6 @@ public static HashMap<String,Location> pendingTeleportLocations = new HashMap<St
 			out.writeUTF(sender.getName());
 			out.writeBoolean(sender.hasPermission("bungeesuite.tp.back.death"));
 			out.writeBoolean(sender.hasPermission("bungeesuite.tp.back.teleport"));
-			out.writeBoolean(sender.hasPermission("bungeesuite.tp.back.warp"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
