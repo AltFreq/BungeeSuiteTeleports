@@ -4,12 +4,11 @@
 
 	<groupId>com.mcdimensions.bungeesuiteteleports</groupId>
 	<artifactId>BungeeSuiteTeleports</artifactId>
-	<version>0.16-SNAPSHOT</version>
+	<version>0.50</version>
 	<packaging>jar</packaging>
 	<name>BungeeSuiteTeleports</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<build.number>0.77</build.number>
 	</properties>
 
 	<repositories>
@@ -17,10 +16,6 @@
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
-		<repository>
-			<id>vault-repo</id>
-			<url>http://ci.herocraftonline.com/plugin/repository/everything</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -28,11 +23,6 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>1.6.2-R0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>net.milkbowl.vault</groupId>
-			<artifactId>Vault</artifactId>
-			<version>1.2.26-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>

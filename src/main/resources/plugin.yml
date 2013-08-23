@@ -1,38 +1,66 @@
-name: BungeeSuiteTeleports
+name: Teleports
 main : com.minecraftdimensions.bungeesuiteteleports.BungeeSuiteTeleports
-version: 0.16
+version: 0.50
 description: Part of the BungeeSuite this plugin allows users to teleport to each other.
 author: Bloodsplat
 website: http://www.spigotmc.org/resources/bungeesuite.9/
 prefix: BungeeSuite
 commands:
     tp:
-        description: Teleports your to a player.
-        usage: Error type /tp (player) *(player)
+        description: Teleports a player to another player or location
         aliases: [teleport]
-    tpall:
-        description: Teleports all players to you.
-        usage: Error type /tpall *(player)
-        aliases: [teleportall]
-    tpa:
-        description: Asks the target player if you can teleport to them.
-        usage: Error type /tpa (player)
-        aliases: [teleportask, teleporta]
-    tpahere:
-        description: Sends a request for the target player to teleport to you.
-        aliases: [teleporthere]
-    tpaccept:
-        description: Accepts the teleport request.
-        aliases: [teleportaccept]
-    tpdeny:
-        description: Denies the teleport request.
-        aliases: [teleportdeny]
+        permission: bungeesuite.teleports.command.tp
+        permission-message: §cYou do not have permission for this command
+        usage: |
+               /<command>  (player)
+               /<command>  (player) (player)
+               /<command>  (x) (y) (z)
+               /<command>  (player) (x) (y) (z)
     tphere:
-        description: Teleports a player to you.
-        usage: Error type /tphere (player)
-        aliases: [teleporthere]
+        description: Teleports a player to you
+        aliases: [teleporthere,tptome]
+        permission: bungeesuite.teleports.command.tphere
+        permission-message: §cYou do not have permission for this command
+        usage: /<command> (player)
+    tpahere:
+        description: Requests a player teleport to you
+        aliases: [teleportaskhere]
+        permission: bungeesuite.teleports.command.tpahere
+        permission-message: §cYou do not have permission for this command
+        usage: /<command> (player)
+    tpall:
+        description: Requests all players teleport to you
+        aliases: [teleportall]
+        permission: bungeesuite.teleports.command.tpall
+        permission-message: §cYou do not have permission for this command
+        usage: |
+               /<command>
+               /<command> (player)
+    tpa:
+        description: Sends a teleport request to a player
+        aliases: [tpask,teleportask,tpto]
+        permission: bungeesuite.teleports.command.tpa
+        permission-message: §cYou do not have permission for this command
+        usage: /<command>  (player)
+    tpaccept:
+        description: Accepts a players teleport request
+        aliases: [teleportaccept]
+        permission: bungeesuite.teleports.command.tpaccept
+        permission-message: §cYou do not have permission for this command
+        usage: /<command>
+    tpdeny:
+        description: Denies a teleport request
+        aliases: [teleportdeny]
+        permission: bungeesuite.teleports.command.tpdeny
+        permission-message: §cYou do not have permission for this command
+        usage: /<command>
     back:
-        description: Teleports you back to your last teleport position or death.
+        description: Sends you back to your last death or teleport location
+        permission: bungeesuite.teleports.command.back
+        permission-message: §cYou do not have permission for this command
+        usage: /<command>
     tptoggle:
-        description: Toggles if people are able to teleport to you or not
-        aliases: [teleporttoggle]
+        description: Toggles the receiving of tp requests
+        permission: bungeesuite.teleports.command.tptoggle
+        permission-message: §cYou do not have permission for this command
+        usage: /<command>
