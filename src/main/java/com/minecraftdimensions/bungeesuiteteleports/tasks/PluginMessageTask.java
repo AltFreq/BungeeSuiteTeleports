@@ -21,6 +21,7 @@ public class PluginMessageTask extends BukkitRunnable {
 		this.bytes = bytes;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void run() {
 		if (Bukkit.getOnlinePlayers().length >1) {
 			Bukkit.getOnlinePlayers()[0].sendPluginMessage(
