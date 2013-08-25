@@ -136,8 +136,8 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 		try {
 			out.writeUTF("SendPlayerBack");
 			out.writeUTF(sender.getName());
-			out.writeBoolean(sender.hasPermission("bungeesuite.tp.back.death"));
-			out.writeBoolean(sender.hasPermission("bungeesuite.tp.back.teleport"));
+			out.writeBoolean(sender.hasPermission("bungeesuite.teleports.back.death"));
+			out.writeBoolean(sender.hasPermission("bungeesuite.teleports.back.teleport"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

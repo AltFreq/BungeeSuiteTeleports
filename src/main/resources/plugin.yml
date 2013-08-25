@@ -64,3 +64,47 @@ commands:
         permission: bungeesuite.teleports.command.tptoggle
         permission-message: §cYou do not have permission for this command
         usage: /<command>
+
+permissions:
+    bungeesuite.teleports.*:
+        description: Gives access to all BungeeSuiteTeleport commands
+        default: op
+        children:
+            bungeesuite.teleports.admin: true
+    bungeesuite.teleports.admin:
+        description: Gives access to all BungeeSuiteTeleport admin commands
+        children:
+            bungeesuite.teleports.vip: true
+            bungeesuite.teleports.command.tp: true
+            bungeesuite.teleports.command.tphere: true
+            bungeesuite.teleports.command.tpall: true
+            bungeesuite.teleports.tp.silent: true
+            bungeesuite.teleports.tp.bypass: true
+    bungeesuite.teleports.vip:
+        decsription: Gives access to all BungeeSuiteTeleport vip commands
+        children:
+            bungeesuite.teleports.command.tptoggle: true
+            bungeesuite.teleports.back.*: true
+            bungeesuite.teleports.user: true
+    bungeesuite.teleports.user:
+        description: Gives access to all BungeeSuiteTeleport user commands
+        children:
+            bungeesuite.teleports.command.tpahere: true
+            bungeesuite.teleports.command.tpa: true
+            bungeesuite.teleports.command.tpaccept: true
+            bungeesuite.teleports.command.tpdeny: true
+    bungeesuite.teleports.back.*:
+        description: Gives full access to the back command
+        children:
+            bungeesuite.teleports.command.back:true
+            bungeesuite.teleports.back.death: true
+            bungeesuite.teleports.back.teleport: true
+    bungeesuite.teleports.back.death:
+        description: Gives access to /back for death points
+    bungeesuite.teleports.back.teleport:
+        description: Gives access to /back for teleports
+    bungeesuite.teleports.tp.silent:
+        description: Does not send a teleport message to the player you teleported to
+    bungeesuite.teleports.tp.bypass:
+        description: Ability to bypass the tptoggle using /tp and this permission
+        
