@@ -96,7 +96,7 @@ permissions:
     bungeesuite.teleports.back.*:
         description: Gives full access to the back command
         children:
-            bungeesuite.teleports.command.back:true
+            bungeesuite.teleports.command.back: true
             bungeesuite.teleports.back.death: true
             bungeesuite.teleports.back.teleport: true
     bungeesuite.teleports.back.death:
