@@ -11,7 +11,7 @@ import org.bukkit.Bukkit;
  */
 public class Client {
     public static void send(String server, int port, ByteArrayOutputStream bytes) {
-
+    	System.out.println("SENDING");
         try {
             Socket socket = new Socket(server, port);
     		DataOutputStream out = new DataOutputStream(socket.getOutputStream());

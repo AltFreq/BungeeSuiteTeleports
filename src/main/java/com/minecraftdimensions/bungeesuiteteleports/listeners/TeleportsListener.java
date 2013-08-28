@@ -1,5 +1,6 @@
 package com.minecraftdimensions.bungeesuiteteleports.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -48,12 +49,16 @@ public class TeleportsListener implements Listener {
 			TeleportsManager.ignoreTeleport.remove(e.getPlayer());
 			return;
 		}
-		TeleportsManager.sendTeleportBackLocation(e.getPlayer());	
+		TeleportsManager.sendTeleportBackLocation(e.getPlayer(), false);	
 	}
 	
 	@EventHandler
 	public void playerLeave(PlayerQuitEvent e){
-		TeleportsManager.sendTeleportBackLocation(e.getPlayer());	
+		boolean empty = false;
+		if(Bukkit.getOnlinePlayers().length==1){
+			empty = true;
+		}
+		TeleportsManager.sendTeleportBackLocation(e.getPlayer(), empty);	
 	}
 	
 	@EventHandler

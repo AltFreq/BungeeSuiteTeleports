@@ -16,14 +16,21 @@ import com.minecraftdimensions.bungeesuiteteleports.socket.Client;
 public class PluginMessageTask extends BukkitRunnable {
 
 	private final ByteArrayOutputStream bytes;
+	private final boolean empty;
 
 	public PluginMessageTask(ByteArrayOutputStream bytes) {
 		this.bytes = bytes;
+		empty = false;
+	}
+
+	public PluginMessageTask(ByteArrayOutputStream b, boolean empty) {
+		this.bytes = b;
+		this.empty = empty;
 	}
 
 	@SuppressWarnings("unchecked")
 	public void run() {
-		if (Bukkit.getOnlinePlayers().length >1) {
+		if (!empty) {
 			Bukkit.getOnlinePlayers()[0].sendPluginMessage(
 					BungeeSuiteTeleports.instance,
 					BungeeSuiteTeleports.OUTGOING_PLUGIN_CHANNEL,

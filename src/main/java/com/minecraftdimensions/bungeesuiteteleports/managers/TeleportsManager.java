@@ -112,7 +112,7 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 		.runTaskAsynchronously(BungeeSuiteTeleports.instance);
 	}
 	
-	public static void sendTeleportBackLocation(Player p) {
+	public static void sendTeleportBackLocation(Player p, boolean empty) {
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(b);
 		try {
@@ -126,7 +126,7 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		new PluginMessageTask(b)
+		new PluginMessageTask(b, empty)
 		.runTaskAsynchronously(BungeeSuiteTeleports.instance);
 	}
 
@@ -179,11 +179,7 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 	}
 	
 	public static void teleportPlayerToLocation(final String player, String world, double x,double y, double z){
-		Player p = Bukkit.getPlayer(player);
 		Location t = new Location(Bukkit.getWorld(world),x,y,z);
-		if(p!=null){
-			p.teleport(t);
-		}else{
 			pendingTeleportLocations.put(player, t);
 			//clear pending teleport if they dont connect
 			Bukkit.getScheduler().runTaskLaterAsynchronously(BungeeSuiteTeleports.instance, new Runnable(){
@@ -193,8 +189,7 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 						pendingTeleportLocations.remove(player);
 					}
 				}
-			}, 100);
-		}		
+			}, 100);		
 	}
 
 	public static void teleportToPlayer(CommandSender sender, String player, String target) {
