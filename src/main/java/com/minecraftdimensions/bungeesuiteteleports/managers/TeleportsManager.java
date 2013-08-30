@@ -180,6 +180,10 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 	
 	public static void teleportPlayerToLocation(final String player, String world, double x,double y, double z){
 		Location t = new Location(Bukkit.getWorld(world),x,y,z);
+		Player p = Bukkit.getPlayer(player);
+		if(p!=null){
+			p.teleport(t);
+		}else{
 			pendingTeleportLocations.put(player, t);
 			//clear pending teleport if they dont connect
 			Bukkit.getScheduler().runTaskLaterAsynchronously(BungeeSuiteTeleports.instance, new Runnable(){
@@ -189,7 +193,8 @@ public static ArrayList<Player> ignoreTeleport= new ArrayList<Player>();
 						pendingTeleportLocations.remove(player);
 					}
 				}
-			}, 100);		
+			}, 100);	
+		}
 	}
 
 	public static void teleportToPlayer(CommandSender sender, String player, String target) {
