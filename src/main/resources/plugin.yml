@@ -44,13 +44,13 @@ commands:
         usage: /<command>  (player)
     tpaccept:
         description: Accepts a players teleport request
-        aliases: [teleportaccept]
+        aliases: [teleportaccept,tpyes]
         permission: bungeesuite.teleports.command.tpaccept
         permission-message: §cYou do not have permission for this command
         usage: /<command>
     tpdeny:
         description: Denies a teleport request
-        aliases: [teleportdeny]
+        aliases: [teleportdeny,tpno]
         permission: bungeesuite.teleports.command.tpdeny
         permission-message: §cYou do not have permission for this command
         usage: /<command>
