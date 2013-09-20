@@ -13,9 +13,9 @@ public class PermissionsManager {
 		player.addAttachment(BungeeSuiteTeleports.instance, "bungeesuite.teleports.admin", true);
 	}
 	public static void addUserPermissions(Player player) {
-		player.addAttachment(BungeeSuiteTeleports.instance, "bungeesuite.chat.user", true);
+		player.addAttachment(BungeeSuiteTeleports.instance, "bungeesuite.teleports.user", true);
 	}
 	public static void addVIPPermissions(Player player) {
-		player.addAttachment(BungeeSuiteTeleports.instance, "bungeesuite.chat.vip", true);
+		player.addAttachment(BungeeSuiteTeleports.instance, "bungeesuite.teleports.vip", true);
 	}
 }
