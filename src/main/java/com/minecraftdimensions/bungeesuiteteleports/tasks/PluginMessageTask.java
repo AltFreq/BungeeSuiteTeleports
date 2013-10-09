@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.minecraftdimensions.bungeesuiteteleports.BungeeSuiteTeleports;
@@ -31,7 +32,11 @@ public class PluginMessageTask extends BukkitRunnable {
 	@SuppressWarnings("unchecked")
 	public void run() {
 		if (!empty) {
-			Bukkit.getOnlinePlayers()[0].sendPluginMessage(
+			Player p = Bukkit.getOnlinePlayers()[0];
+			if(p==null){
+				return;
+			}
+			p.sendPluginMessage(
 					BungeeSuiteTeleports.instance,
 					BungeeSuiteTeleports.OUTGOING_PLUGIN_CHANNEL,
 					bytes.toByteArray());
