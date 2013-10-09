@@ -20,6 +20,15 @@ public class TeleportsListener implements Listener {
 	
 	@EventHandler
 	public void playerConnect (PlayerJoinEvent e){
+		 if ( e.getPlayer().hasPermission( "bungeesuite.*" ) ) {
+	            PermissionsManager.addAllPermissions( e.getPlayer() );
+	        } else if ( e.getPlayer().hasPermission( "bungeesuite.admin" ) ) {
+	            PermissionsManager.addAdminPermissions( e.getPlayer() );
+	        } else if(e.getPlayer().hasPermission( "bungeesuite.vip" )){
+	        	PermissionsManager.addVIPPermissions( e.getPlayer() );
+	        }else if ( e.getPlayer().hasPermission( "bungeesuite.user" ) ) {
+	            PermissionsManager.addUserPermissions( e.getPlayer() );
+	        }
 		if(TeleportsManager.pendingTeleports.containsKey(e.getPlayer().getName())){
 			Player t = TeleportsManager.pendingTeleports.get(e.getPlayer().getName());
 			TeleportsManager.pendingTeleports.remove(e.getPlayer().getName());
