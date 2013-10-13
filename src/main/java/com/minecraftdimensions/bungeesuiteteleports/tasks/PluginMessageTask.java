@@ -21,6 +21,10 @@ public class PluginMessageTask extends BukkitRunnable {
 
     @SuppressWarnings("unchecked")
     public void run() {
+        Player[] players = Bukkit.getOnlinePlayers();
+        if ( players.length == 0 ) {
+            return;
+        }
         Player p = Bukkit.getOnlinePlayers()[0];
         if ( p == null ) {
             return;
