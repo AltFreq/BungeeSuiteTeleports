@@ -28,7 +28,7 @@ public class TPCommand implements CommandExecutor {
             TeleportsManager.teleportToLocation( sender.getName(), loc );
             return true;
         }
-        if ( args.length == 4 ) {
+        if ( args.length == 5 ) {
             if ( Bukkit.getPlayer( args[0] ) != null ) {
                 String x = args[1];
                 String y = args[2];
