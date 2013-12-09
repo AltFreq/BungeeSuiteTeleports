@@ -3,6 +3,7 @@ package com.minecraftdimensions.bungeesuiteteleports.commands;
 
 import com.minecraftdimensions.bungeesuiteteleports.managers.TeleportsManager;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,7 +13,14 @@ public class TPCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand( CommandSender sender, Command command, String label, String[] args ) {
-
+        if ( !( sender instanceof Player ) ) {
+            if ( args.length == 2 ) {
+                Bukkit.getPlayer( args[0] ).teleport( Bukkit.getPlayer( args[1] ) );
+            } else if ( args.length == 4 ) {
+                Player p = Bukkit.getPlayer( args[0] );
+                p.teleport( new Location( p.getWorld(), Double.parseDouble( args[1] ), Double.parseDouble( args[2] ), Double.parseDouble( args[3] ) ) );
+            }
+        }
         if ( args.length == 1 ) {
             TeleportsManager.teleportToPlayer( sender, sender.getName(), args[0] );
             return true;
