@@ -21,11 +21,13 @@ public class PluginMessageTask extends BukkitRunnable {
 
     @SuppressWarnings("unchecked")
     public void run() {
-        Player[] players = Bukkit.getOnlinePlayers();
+        Player[] players = Bukkit.getOnlinePlayers().toArray( new Player[0]);
+
         if ( players.length == 0 ) {
             return;
         }
-        Player p = Bukkit.getOnlinePlayers()[0];
+        Player p = players[0];
+
         if ( p == null ) {
             return;
         }
